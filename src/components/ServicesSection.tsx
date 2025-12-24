@@ -30,7 +30,7 @@ export function ServicesSection() {
           y: 0
         }} viewport={{
           once: true
-        }} className="text-[#FF9B6A] font-medium tracking-widest text-sm uppercase">
+        }} className="text-[#DCAB6B] font-medium tracking-widest text-sm uppercase">
             Features
           </motion.span>
           <motion.h2 initial={{
@@ -62,7 +62,7 @@ export function ServicesSection() {
           }} transition={{
             delay: index * 0.2
           }} className="flex flex-col md:items-end md:text-right space-y-3 group">
-                <div className="p-3 bg-[#2A2A2A] rounded-2xl text-[#FF9B6A] group-hover:bg-[#FF9B6A] group-hover:text-white transition-colors duration-300 w-fit">
+                <div className="p-3 bg-[#2A2A2A] rounded-2xl text-[#DCAB6B] group-hover:bg-[#DCAB6B]/40 group-hover:text-white transition-colors duration-300 w-fit">
                   {service.icon}
                 </div>
                 <h3 className="text-xl font-bold">{service.title}</h3>
@@ -99,7 +99,7 @@ export function ServicesSection() {
           }} transition={{
             delay: index * 0.2
           }} className="flex flex-col items-start space-y-3 group">
-                <div className="p-3 bg-[#2A2A2A] rounded-2xl text-[#FF9B6A] group-hover:bg-[#FF9B6A] group-hover:text-white transition-colors duration-300 w-fit">
+                <div className="p-3 bg-[#2A2A2A] rounded-2xl text-[#DCAB6B] group-hover:bg-[#DCAB6B]/40 group-hover:text-white transition-colors duration-300 w-fit">
                   {service.icon}
                 </div>
                 <h3 className="text-xl font-bold">{service.title}</h3>

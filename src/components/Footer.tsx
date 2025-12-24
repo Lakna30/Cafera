@@ -7,17 +7,17 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <a href="#" className="text-2xl font-bold tracking-tighter">
-              netWO
+              Caféra
             </a>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Serving the best coffee with the best vibes since 2010. Come visit
+              Serving the best coffee with the best vibes since 2020. Come visit
               us and taste the difference.
             </p>
           </div>
 
           {/* Links Column 1 */}
           <div>
-            <h4 className="font-bold mb-6 text-[#FF9B6A]">Company</h4>
+            <h4 className="font-bold mb-6 text-[#DCAB6B]">Company</h4>
             <ul className="space-y-3 text-gray-400 text-sm">
               <li>
                 <a href="#" className="hover:text-white transition-colors">
@@ -44,7 +44,7 @@ export function Footer() {
 
           {/* Links Column 2 */}
           <div>
-            <h4 className="font-bold mb-6 text-[#FF9B6A]">Support</h4>
+            <h4 className="font-bold mb-6 text-[#DCAB6B]">Support</h4>
             <ul className="space-y-3 text-gray-400 text-sm">
               <li>
                 <a href="#" className="hover:text-white transition-colors">
@@ -71,15 +71,15 @@ export function Footer() {
 
           {/* Socials */}
           <div>
-            <h4 className="font-bold mb-6 text-[#FF9B6A]">Follow Us</h4>
+            <h4 className="font-bold mb-6 text-[#DCAB6B]">Follow Us</h4>
             <div className="flex space-x-4">
-              <a href="#" className="bg-[#2A2A2A] p-3 rounded-full hover:bg-[#FF9B6A] hover:text-white transition-all duration-300">
+              <a href="#" className="bg-[#2A2A2A] p-3 rounded-full hover:bg-[#DCAB6B]/40 hover:text-white transition-all duration-300">
                 <Facebook size={18} />
               </a>
-              <a href="#" className="bg-[#2A2A2A] p-3 rounded-full hover:bg-[#FF9B6A] hover:text-white transition-all duration-300">
+              <a href="#" className="bg-[#2A2A2A] p-3 rounded-full hover:bg-[#DCAB6B]/40 hover:text-white transition-all duration-300">
                 <Twitter size={18} />
               </a>
-              <a href="#" className="bg-[#2A2A2A] p-3 rounded-full hover:bg-[#FF9B6A] hover:text-white transition-all duration-300">
+              <a href="#" className="bg-[#2A2A2A] p-3 rounded-full hover:bg-[#DCAB6B]/40 hover:text-white transition-all duration-300">
                 <Instagram size={18} />
               </a>
             </div>
@@ -87,7 +87,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-          <p>&copy; 2024 netWO Cafe. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Caféra Cafe. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="hover:text-white transition-colors">
               Terms of Service

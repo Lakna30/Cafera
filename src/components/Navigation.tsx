@@ -33,21 +33,27 @@ export function Navigation() {
   return <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-[#1A1A1A]/90 backdrop-blur-md py-4' : 'bg-transparent py-6'}`}>
       <div className="container mx-auto px-4 md:px-8 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="text-2xl font-bold text-white tracking-tighter">
+        <Link to="/" className="text-3xl font-bold text-white tracking-tighter">
           Caféra
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
-          {navLinks.map(link => <Link key={link.name} to={link.href} className={`text-sm font-medium transition-colors ${isActive(link.href) ? 'text-[#FF9B6A]' : 'text-gray-300 hover:text-[#FF9B6A]'}`}>
+          {navLinks.map(link => <Link key={link.name} to={link.href} className={`text-lg font-medium transition-colors ${isActive(link.href) ? 'text-[#DCAB6B]' : 'text-gray-300 hover:text-[#DCAB6B]'}`}>
               {link.name}
             </Link>)}
         </div>
 
         {/* CTA Button */}
         <div className="hidden md:block">
-          <Link to="/reservation" className="bg-[#FF9B6A] text-white px-6 py-2 rounded-full font-medium hover:bg-[#e88a5b] transition-colors text-sm">
-            Book Table
+          <Link to="" className="px-6 py-2 rounded-full font-medium text-md text-white transition-all duration-300
+            bg-white/10 backdrop-blur-sm 
+            border border-white/70 border-opacity-90
+            shadow-[inset_0_0_10px_rgba(255,255,255,0.1)]
+            hover:bg-white/20 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]
+            relative overflow-hidden
+            before:absolute before:inset-0 before:rounded-full before:border-t before:border-white/40 before:pointer-events-none">
+            Login
           </Link>
         </div>
 

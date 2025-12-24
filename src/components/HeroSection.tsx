@@ -48,7 +48,7 @@ export function HeroSection() {
           }} transition={{
             delay: 0.2
           }} className="text-sm font-medium tracking-widest text-gray-500 uppercase">
-              Cafe
+              Caféra
             </motion.span>
 
             <motion.h1 initial={{
@@ -59,9 +59,9 @@ export function HeroSection() {
             y: 0
           }} transition={{
             delay: 0.3
-          }} className="text-5xl md:text-7xl font-bold text-[#1A1A1A] leading-tight">
+          }} className="text-5xl md:text-7xl font-bold text-[#221406] leading-tight">
               Homemade Coffee with{' '}
-              <span className="text-[#FF9B6A]">Amazing Vibes</span>
+              <span className="text-[#221406]">Amazing Vibes</span>
             </motion.h1>
 
             <motion.p initial={{
@@ -78,16 +78,29 @@ export function HeroSection() {
               in every cup.
             </motion.p>
 
-            <motion.button initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            delay: 0.5
-          }} className="bg-[#1A1A1A] text-white px-8 py-4 rounded-full font-medium hover:bg-gray-800 transition-colors">
-              Order Now
+            <motion.button 
+              initial={{
+                opacity: 0,
+                y: 20
+              }} 
+              animate={{
+                opacity: 1,
+                y: 0
+              }} 
+              transition={{
+                delay: 0.5
+              }} 
+              className="relative px-10 py-3 rounded-full font-medium text-white 
+                bg-gradient-to-b from-[#1A1A1A] to-[#575656]
+                border border-white/70
+                shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]
+                hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]
+                transition-all duration-300
+                overflow-hidden
+                before:absolute before:inset-0 before:rounded-full 
+                before:border-t before:border-white/70 before:pointer-events-none"
+            >
+              <span className="relative z-10">Order Now</span>
             </motion.button>
           </div>
 
@@ -103,9 +116,9 @@ export function HeroSection() {
           duration: 0.8
         }} className="relative h-full flex items-center justify-center">
             {/* Main Coffee Image */}
-            <div className="relative w-full max-w-md md:max-w-lg aspect-square">
+            <div className="relative w-full max-w-md md:max-w-md aspect-square">
               {/* Using the provided image URL */}
-              <img src={HeroImg} alt="Coffee Splash" className="w-full h-full object-contain drop-shadow-2xl transform hover:scale-105 transition-transform duration-500" style={{
+              <img src={HeroImg} alt="Coffee Splash" className="w-full h-full object-contain scale-[1.5] drop-shadow-2xl transform transition-transform duration-500" style={{
               mixBlendMode: 'multiply'
             }} />
 

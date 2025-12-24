@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import LatteArt from "@/assets/LatteArt.jpg";
 
 export function AboutSection() {
+  const navigate = useNavigate();
   return <section id="about" className="py-20 px-4 md:px-8 bg-[#1A1A1A] text-white overflow-hidden">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -48,14 +50,14 @@ export function AboutSection() {
         }} transition={{
           duration: 0.8
         }} className="space-y-6">
-            <span className="text-[#FF9B6A] font-medium tracking-widest text-sm uppercase">
+            <span className="text-[#DCAB6B] font-medium tracking-widest text-sm uppercase">
               About Us
             </span>
             <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-              About <span className="text-[#FF9B6A]">Cafee</span>
+              About Caféra
             </h2>
             <p className="text-gray-400 text-lg leading-relaxed">
-              Founded in 2010, Cafee started with a simple mission: to serve the
+              Caféra started with a simple mission: to serve the
               best coffee in town while creating a space where community
               thrives. Our beans are ethically sourced from sustainable farms
               across the globe and roasted in-house to perfection.
@@ -65,7 +67,17 @@ export function AboutSection() {
               catch up with friends, or just a quick caffeine fix, we've got you
               covered. Come taste the difference passion makes.
             </p>
-            <button className="bg-[#FF9B6A] text-white px-8 py-3 rounded-full font-medium hover:bg-[#e88a5b] transition-colors mt-4">
+            <button 
+              onClick={() => navigate('/about')}
+              className="relative px-10 py-3 rounded-full font-medium text-white mt-4
+                bg-gradient-to-r from-[#DCAB6B] to-[#3D230A]
+                border border-white/20
+                shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]
+                hover:shadow-[0_0_15px_rgba(255,155,106,0.4)]
+                transition-all duration-300
+                overflow-hidden
+                hover:brightness-110"
+            >
               Learn More
             </button>
           </motion.div>
