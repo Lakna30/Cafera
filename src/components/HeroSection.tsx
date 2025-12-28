@@ -1,6 +1,51 @@
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, animate } from 'framer-motion';
+import React, { useEffect, useRef } from 'react';
 import HeroImg from "@/assets/HeroImg.png";
+import HeroBg from "@/assets/HeroBg.png";
 
+// AnimatedCounter component for status
+type AnimatedCounterProps = {
+  end: number;
+  suffix?: string;
+  label: string;
+};
+
+function AnimatedCounter({ end, suffix = '', label }: AnimatedCounterProps) {
+  const count = useMotionValue(0);
+  const [display, setDisplay] = React.useState(0);
+  const nodeRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const controls = animate(count, end, { duration: 1.5, ease: 'easeOut' });
+    const unsubscribe = count.on('change', (latest) => {
+      setDisplay(latest);
+    });
+    return () => {
+      controls.stop();
+      unsubscribe();
+    };
+  }, [end, count]);
+
+  // Format number with 'k' for thousands
+  let formatted = '';
+  if (display >= 1000) {
+    formatted = `${(display / 1000).toFixed(display % 1000 === 0 ? 0 : 1)}k`;
+  } else {
+    formatted = Math.floor(display).toLocaleString();
+  }
+  return (
+    <div className="text-left">
+      <span
+        ref={nodeRef}
+        style={{ fontVariantNumeric: 'tabular-nums' }}
+        className="block text-3xl md:text-4xl font-bold text-white"
+      >
+        {formatted}{suffix}
+      </span>
+      <span className="text-xs md:text-sm text-white/70 font-medium">{label}</span>
+    </div>
+  );
+}
 export function HeroSection() {
   return <section className="pt-24 pb-12 px-4 md:px-8 bg-[#1A1A1A]">
       <motion.div initial={{
@@ -11,8 +56,16 @@ export function HeroSection() {
       y: 0
     }} transition={{
       duration: 0.8
-    }} className="container mx-auto bg-[#F5E6D3] rounded-[3rem] relative overflow-hidden min-h-[600px] flex items-center">
-        {/* Decorative Elements */}
+    }} 
+      className="container mx-auto rounded-[3rem] relative overflow-hidden min-h-[600px] flex items-center"
+      style={{
+        backgroundImage: `url(${HeroBg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* Decorative Elements */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
           {/* Coffee beans scattered (simulated with circles for now or simple svgs) */}
           <motion.div animate={{
@@ -72,7 +125,7 @@ export function HeroSection() {
             y: 0
           }} transition={{
             delay: 0.4
-          }} className="text-gray-600 text-lg leading-relaxed">
+          }} className="text-gray-800 text-lg leading-relaxed">
               Experience the perfect blend of artisanal coffee and cozy
               atmosphere. We roast our beans daily to ensure the freshest taste
               in every cup.
@@ -82,25 +135,41 @@ export function HeroSection() {
               initial={{
                 opacity: 0,
                 y: 20
-              }} 
+              }}
               animate={{
                 opacity: 1,
                 y: 0
-              }} 
+              }}
               transition={{
                 delay: 0.5
-              }} 
-              className="relative px-10 py-3 rounded-full font-medium text-white 
-                bg-gradient-to-b from-[#1A1A1A] to-[#575656]
-                border border-white/70
-                shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]
-                hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]
-                transition-all duration-300
-                overflow-hidden
-                before:absolute before:inset-0 before:rounded-full 
-                before:border-t before:border-white/70 before:pointer-events-none"
+              }}
+              className="flex flex-col items-start gap-4"
             >
-              <span className="relative z-10">Order Now</span>
+              <div className="flex gap-4">
+                <button
+                  className="relative px-10 py-3 rounded-full font-medium text-white 
+                    bg-gradient-to-b from-[#3D230A] to-[#DCAB6B]
+                    border border-white/70
+                    shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]
+                    hover:shadow-[0_0_15px_rgba(255,155,106,0.4)]
+                    transition-all duration-300
+                    overflow-hidden
+                    hover:brightness-110"
+                >
+                  <span className="relative z-10">Order Now</span>
+                </button>
+                <button
+                  className="relative px-10 py-3 rounded-full font-medium text-[#221406] bg-white border border-[#221406]/20 shadow-[inset_0_1px_1px_rgba(34,20,6,0.08)] hover:bg-[#F5E6D3] transition-all duration-300 overflow-hidden"
+                >
+                  <span className="relative z-10">Explore More</span>
+                </button>
+              </div>
+              {/* Status Counters */}
+              <div className="flex gap-8 mt-4">
+                <AnimatedCounter end={50} suffix="+" label="Items of Coffee" />
+                <AnimatedCounter end={20} suffix="+" label="Order Running" />
+                <AnimatedCounter end={2000} suffix="+" label="Happy Customers" />
+              </div>
             </motion.button>
           </div>
 

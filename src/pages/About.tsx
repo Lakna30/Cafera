@@ -68,11 +68,11 @@ export function About() {
       }} transition={{
         duration: 0.8
       }} className="container mx-auto text-center">
-          <span className="text-[#FF9B6A] font-medium tracking-widest text-sm uppercase">
+          <span className="text-[#DCAB6B] font-medium tracking-widest text-sm uppercase">
             Our Story
           </span>
           <h1 className="text-5xl md:text-7xl font-bold text-white mt-4 mb-6">
-            Brewing <span className="text-[#FF9B6A]">Passion</span> Since 2010
+            Brewing Passion Since 2010
           </h1>
           <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
             What started as a small neighborhood cafe has grown into a beloved
@@ -112,7 +112,7 @@ export function About() {
             duration: 0.8
           }} className="space-y-6 text-white">
               <h2 className="text-4xl md:text-5xl font-bold">
-                More Than Just <span className="text-[#FF9B6A]">Coffee</span>
+                More Than Just Coffee
               </h2>
               <p className="text-gray-400 text-lg leading-relaxed">
                 Our founder, Maria Santos, opened netWO with a vision: to create
@@ -144,7 +144,7 @@ export function About() {
         }} viewport={{
           once: true
         }} className="text-center mb-16">
-            <span className="text-[#FF9B6A] font-medium tracking-widest text-sm uppercase">
+            <span className="text-[#DCAB6B] font-medium tracking-widest text-sm uppercase">
               Our Values
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-white mt-2">
@@ -153,25 +153,28 @@ export function About() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => <motion.div key={index} initial={{
-            opacity: 0,
-            y: 30
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            delay: index * 0.1
-          }} className="bg-[#2A2A2A] p-8 rounded-3xl text-center space-y-4 group hover:bg-[#FF9B6A] transition-all duration-300">
-                <div className="text-[#FF9B6A] group-hover:text-white transition-colors mx-auto w-fit">
+            {values.map((value, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="backdrop-blur-lg bg-white/10 border border-white/20 shadow-xl p-8 rounded-3xl text-center space-y-4 group transition-all duration-300 relative overflow-hidden cursor-pointer"
+                style={{ boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)' }}
+                whileHover={{ scale: 1.10, boxShadow: '0 16px 48px 0 rgba(31,38,135,0.25)' }}
+              >
+                <div className="text-[#DCAB6B] group-hover:text-white transition-colors mx-auto w-fit">
                   {value.icon}
                 </div>
                 <h3 className="text-xl font-bold text-white">{value.title}</h3>
                 <p className="text-gray-400 group-hover:text-white/90 transition-colors">
                   {value.description}
                 </p>
-              </motion.div>)}
+                {/* Glass shine effect on hover */}
+                <span className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300 bg-gradient-to-tr from-white/60 to-transparent" />
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -188,7 +191,7 @@ export function About() {
         }} viewport={{
           once: true
         }} className="text-center mb-16">
-            <span className="text-[#FF9B6A] font-medium tracking-widest text-sm uppercase">
+            <span className="text-[#DCAB6B] font-medium tracking-widest text-sm uppercase">
               Meet The Team
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-white mt-2">
@@ -213,7 +216,7 @@ export function About() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] to-transparent opacity-60"></div>
                 </div>
                 <h3 className="text-xl font-bold text-white">{member.name}</h3>
-                <p className="text-[#FF9B6A]">{member.role}</p>
+                <p className="text-[#DCAB6B]">{member.role}</p>
               </motion.div>)}
           </div>
         </div>
@@ -231,7 +234,7 @@ export function About() {
         }} viewport={{
           once: true
         }} className="text-center mb-16">
-            <span className="text-[#FF9B6A] font-medium tracking-widest text-sm uppercase">
+            <span className="text-[#DCAB6B] font-medium tracking-widest text-sm uppercase">
               Our Journey
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-white mt-2">
@@ -251,8 +254,8 @@ export function About() {
           }} transition={{
             duration: 0.6
           }} className="flex items-center gap-8">
-                <div className="flex-shrink-0 w-24 h-24 bg-[#FF9B6A] rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">
+                <div className="flex-shrink-0 w-24 h-24 bg-[#DCAB6B] rounded-full flex items-center justify-center">
+                  <span className="text-[#3D230A] font-bold text-xl">
                     {item.year}
                   </span>
                 </div>
@@ -282,7 +285,10 @@ export function About() {
             Experience the warmth of our cafe and taste the difference passion
             makes. We can't wait to serve you!
           </p>
-          <button className="bg-[#FF9B6A] text-white px-8 py-4 rounded-full font-medium hover:bg-[#e88a5b] transition-colors">
+          <button className="bg-gradient-to-r from-[#DCAB6B] to-[#3D230A] border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] text-white px-8 py-4 rounded-full font-medium hover:shadow-[0_0_15px_rgba(255,155,106,0.4)]
+                  transition-all duration-300
+                  overflow-hidden
+                  hover:brightness-110">
             Make a Reservation
           </button>
         </motion.div>
