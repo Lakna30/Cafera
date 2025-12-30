@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { Navigation } from '../components/Navigation';
 import { Footer } from '../components/Footer';
 import { Award, Heart, Users, Coffee } from 'lucide-react';
+import about from "@/assets/AboutUs.png";
+
 export function About() {
   const values = [{
     icon: <Coffee className="w-8 h-8" />,
@@ -15,7 +17,7 @@ export function About() {
   }, {
     icon: <Award className="w-8 h-8" />,
     title: 'Excellence',
-    description: 'Award-winning baristas dedicated to perfecting the art of coffee.'
+    description: 'Award-winning Caféra dedicated to perfecting the art of coffee.'
   }, {
     icon: <Users className="w-8 h-8" />,
     title: 'Sustainability',
@@ -23,7 +25,7 @@ export function About() {
   }];
   const team = [{
     name: 'Sarah Mitchell',
-    role: 'Head Barista',
+    role: 'Head Caféra',
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
   }, {
     name: 'James Chen',
@@ -40,7 +42,7 @@ export function About() {
   }];
   const timeline = [{
     year: '2010',
-    event: 'Founded netWO Cafe with a dream and a single espresso machine'
+    event: 'Founded Caféra Cafe with a dream and a single espresso machine'
   }, {
     year: '2013',
     event: 'Expanded to our second location and launched our roastery'
@@ -71,8 +73,13 @@ export function About() {
           <span className="text-[#DCAB6B] font-medium tracking-widest text-sm uppercase">
             Our Story
           </span>
-          <h1 className="text-5xl md:text-7xl font-bold text-white mt-4 mb-6">
-            Brewing Passion Since 2010
+          <h1 className="text-5xl md:text-7xl font-bold mt-4 mb-6">
+            <span
+              className="bg-gradient-to-r from-[#F5E6D3] via-[#DCAB6B] to-[#B68973] bg-clip-text text-transparent"
+              style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
+            >
+              Brewing Passion Since 2010
+            </span>
           </h1>
           <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
             What started as a small neighborhood cafe has grown into a beloved
@@ -97,7 +104,7 @@ export function About() {
           }} transition={{
             duration: 0.8
           }}>
-              <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cafe Interior" className="rounded-3xl w-full h-[500px] object-cover shadow-2xl" />
+              <img src={about} alt="Cafe Interior" className="rounded-3xl w-full h-[500px] object-cover shadow-2xl" />
             </motion.div>
 
             <motion.div initial={{
@@ -200,24 +207,30 @@ export function About() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => <motion.div key={index} initial={{
-            opacity: 0,
-            scale: 0.9
-          }} whileInView={{
-            opacity: 1,
-            scale: 1
-          }} viewport={{
-            once: true
-          }} transition={{
-            delay: index * 0.1
-          }} className="group">
-                <div className="relative overflow-hidden rounded-3xl mb-4">
-                  <img src={member.image} alt={member.name} className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] to-transparent opacity-60"></div>
+            {team.map((member, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group flex flex-col items-center"
+              >
+                <div className="relative mb-4 flex items-center justify-center">
+                  <div className="overflow-hidden" style={{ width: '170px', height: '220px', borderRadius: '50% / 40%', boxShadow: '0 8px 32px 0 rgba(31,38,135,0.18)' }}>
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      style={{ width: '170px', height: '220px', objectFit: 'cover' }}
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] to-transparent opacity-60 rounded-full pointer-events-none" style={{ borderRadius: '50% / 40%' }}></div>
                 </div>
-                <h3 className="text-xl font-bold text-white">{member.name}</h3>
-                <p className="text-[#DCAB6B]">{member.role}</p>
-              </motion.div>)}
+                <h3 className="text-xl font-bold text-white text-center">{member.name}</h3>
+                <p className="text-[#DCAB6B] text-center">{member.role}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

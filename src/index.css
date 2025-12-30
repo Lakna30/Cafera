@@ -5,3 +5,19 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 /* DO NOT DELETE THESE TAILWIND IMPORTS, OTHERWISE THE STYLING WILL NOT RENDER AT ALL - DO NOT DELETE THIS COMMENT */
+
+@keyframes borderShine {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.golden-border {
+  position: relative;
+  background: linear-gradient(45deg, #3D230A, #DCAB6B, #F5E6D3, #DCAB6B, #3D230A);
+  background-size: 200% 200%;
+  animation: borderShine 3s ease infinite;
+  box-shadow: 0 0 15px rgba(220, 171, 107, 0.3);
+  padding: 2px;
+  border-radius: 1.5rem;
+}
