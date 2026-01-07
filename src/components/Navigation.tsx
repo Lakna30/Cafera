@@ -1,7 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+// Define interface for ScrollToTopLink props
+interface ScrollToTopLinkProps {
+  to: string;
+  children: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
+}
+
+// Custom Link component that scrolls to top
+const ScrollToTopLink: React.FC<ScrollToTopLinkProps> = ({ to, children, className, onClick }) => {
+  const navigate = useNavigate();
+  
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    // Close mobile menu if open
+    if (onClick) onClick();
+    // Navigate to the target
+    navigate(to);
+    // Scroll to top
+    window.scrollTo(0, 0);
+  };
+
+  return (
+    <Link to={to} className={className} onClick={handleClick}>
+      {children}
+    </Link>
+  );
+};
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -33,15 +62,19 @@ export function Navigation() {
   return <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-[#1A1A1A]/90 backdrop-blur-md py-4' : 'bg-transparent py-6'}`}>
       <div className="container mx-auto px-4 md:px-8 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="text-3xl font-bold text-white tracking-tighter">
+        <ScrollToTopLink to="/" className="text-3xl font-bold text-white tracking-tighter">
           Caféra
-        </Link>
+        </ScrollToTopLink>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
-          {navLinks.map(link => <Link key={link.name} to={link.href} className={`text-lg font-medium transition-colors ${isActive(link.href) ? 'text-[#DCAB6B]' : 'text-gray-300 hover:text-[#DCAB6B]'}`}>
-              {link.name}
-            </Link>)}
+          {navLinks.map(link => <ScrollToTopLink 
+            key={link.name} 
+            to={link.href} 
+            className={`text-lg font-medium transition-colors ${isActive(link.href) ? 'text-[#DCAB6B]' : 'text-gray-300 hover:text-[#DCAB6B]'}`}
+          >
+            {link.name}
+          </ScrollToTopLink>)}
         </div>
 
         {/* CTA Button */}
@@ -76,12 +109,21 @@ export function Navigation() {
         height: 0
       }} className="md:hidden bg-[#1A1A1A] border-t border-gray-800 overflow-hidden">
             <div className="flex flex-col p-4 space-y-4">
-              {navLinks.map(link => <Link key={link.name} to={link.href} className={`transition-colors ${isActive(link.href) ? 'text-[#FF9B6A]' : 'text-gray-300 hover:text-[#FF9B6A]'}`} onClick={() => setIsMobileMenuOpen(false)}>
-                  {link.name}
-                </Link>)}
-              <Link to="/reservation" className="bg-[#FF9B6A] text-white px-6 py-3 rounded-full font-medium w-full text-center" onClick={() => setIsMobileMenuOpen(false)}>
+              {navLinks.map(link => <ScrollToTopLink 
+                key={link.name} 
+                to={link.href} 
+                className={`transition-colors ${isActive(link.href) ? 'text-[#FF9B6A]' : 'text-gray-300 hover:text-[#FF9B6A]'}`} 
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.name}
+              </ScrollToTopLink>)}
+              <ScrollToTopLink 
+                to="/reservation" 
+                className="bg-[#FF9B6A] text-white px-6 py-3 rounded-full font-medium w-full text-center" 
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
                 Book Table
-              </Link>
+              </ScrollToTopLink>
             </div>
           </motion.div>}
       </AnimatePresence>

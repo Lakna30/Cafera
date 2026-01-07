@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Navigation } from '../components/Navigation';
 import { Footer } from '../components/Footer';
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from 'lucide-react';
+import { MapPin, Clock, Mail, Phone, Send, CheckCircle } from 'lucide-react';
+import { Facebook, Instagram, Twitter } from 'lucide-react';
 export function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -61,44 +62,22 @@ export function Contact() {
       }} transition={{
         duration: 0.8
       }} className="container mx-auto text-center">
-          <span className="text-[#FF9B6A] font-medium tracking-widest text-sm uppercase">
+          <span className="text-[#DCAB6B] font-medium tracking-widest text-sm uppercase">
             Get In Touch
           </span>
           <h1 className="text-5xl md:text-7xl font-bold text-white mt-4 mb-6">
-            Contact <span className="text-[#FF9B6A]">Us</span>
+            <span
+              className="bg-gradient-to-r from-[#F5E6D3] via-[#DCAB6B] to-[#B68973] bg-clip-text text-transparent"
+              style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
+            >
+              Contact Us
+            </span>
           </h1>
           <p className="text-gray-400 text-lg max-w-3xl mx-auto">
             Have a question, feedback, or just want to say hello? We'd love to
             hear from you!
           </p>
         </motion.div>
-      </section>
-
-      {/* Contact Info Cards */}
-      <section className="py-12 px-4 md:px-8 bg-[#1A1A1A]">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {contactInfo.map((info, index) => <motion.div key={index} initial={{
-            opacity: 0,
-            y: 30
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            delay: index * 0.1
-          }} className="bg-[#2A2A2A] p-6 rounded-3xl text-center space-y-4 hover:bg-[#3A3A3A] transition-colors">
-                <div className="text-[#FF9B6A] mx-auto w-fit p-3 bg-[#FF9B6A]/10 rounded-2xl">
-                  {info.icon}
-                </div>
-                <h3 className="text-xl font-bold text-white">{info.title}</h3>
-                <div className="space-y-1">
-                  {info.details.map((detail, idx) => <p key={idx} className="text-gray-400 text-sm">
-                      {detail}
-                    </p>)}
-                </div>
-              </motion.div>)}
-          </div>
-        </div>
       </section>
 
       {/* Contact Form & Map */}
@@ -116,8 +95,15 @@ export function Contact() {
             once: true
           }} transition={{
             duration: 0.6
-          }} className="bg-[#F5E6D3] rounded-[3rem] p-8 md:p-12">
-              <h2 className="text-3xl font-bold text-[#1A1A1A] mb-6">
+          }} 
+          className="rounded-[3rem] p-8 md:p-12"
+          style={{
+            background: 'linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
+            boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.36)',
+            border: '1px solid rgba(255, 255, 255, 0.08)',
+            backdropFilter: 'blur(12px)'
+          }}>
+            <h2 className="text-3xl font-bold text-white mb-10">
                 Send Us a Message
               </h2>
 
@@ -137,41 +123,54 @@ export function Contact() {
                   </p>
                 </motion.div> : <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label className="block text-[#1A1A1A] font-medium mb-2">
+                    <label className="block text-white/80 font-medium mb-2">
                       Name *
                     </label>
-                    <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 rounded-2xl bg-white border-2 border-transparent focus:border-[#FF9B6A] outline-none transition-colors" placeholder="Your name" />
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 rounded-2xl bg-[#1A1A1A] border-2 border-transparent focus:border-[#DCAB6B] outline-none transition-colors" placeholder="Your name" />
                   </div>
 
                   <div>
-                    <label className="block text-[#1A1A1A] font-medium mb-2">
+                    <label className="block text-white/80 font-medium mb-2">
                       Email *
                     </label>
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 rounded-2xl bg-white border-2 border-transparent focus:border-[#FF9B6A] outline-none transition-colors" placeholder="your@email.com" />
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 rounded-2xl bg-[#1A1A1A] border-2 border-transparent focus:border-[#DCAB6B] outline-none transition-colors" placeholder="your@email.com" />
                   </div>
 
                   <div>
-                    <label className="block text-[#1A1A1A] font-medium mb-2">
+                    <label className="block text-white/80 font-medium mb-2">
                       Subject *
                     </label>
-                    <select name="subject" value={formData.subject} onChange={handleChange} required className="w-full px-4 py-3 rounded-2xl bg-white border-2 border-transparent focus:border-[#FF9B6A] outline-none transition-colors">
-                      <option value="">Select a subject</option>
-                      <option value="general">General Inquiry</option>
-                      <option value="reservation">Reservation Question</option>
-                      <option value="feedback">Feedback</option>
-                      <option value="catering">Catering Request</option>
-                      <option value="other">Other</option>
+                    <select 
+                      name="subject" 
+                      value={formData.subject} 
+                      onChange={handleChange} 
+                      required
+                      className="w-full px-4 py-3 rounded-2xl bg-[#1A1A1A] border-2 border-transparent focus:border-[#DCAB6B] outline-none transition-colors appearance-none text-gray-400"
+                    >
+                      <option value="" className="text-gray-400">Select a subject</option>
+                      <option value="reservation" className="text-gray-400">Reservation Inquiry</option>
+                      <option value="feedback" className="text-gray-400">Feedback</option>
+                      <option value="event" className="text-gray-400">Event Inquiry</option>
+                      <option value="other" className="text-gray-400">Other</option>
                     </select>
                   </div>
 
                   <div>
-                    <label className="block text-[#1A1A1A] font-medium mb-2">
+                    <label className="block text-white/80 font-medium mb-2">
                       Message *
                     </label>
-                    <textarea name="message" value={formData.message} onChange={handleChange} required rows={5} className="w-full px-4 py-3 rounded-2xl bg-white border-2 border-transparent focus:border-[#FF9B6A] outline-none transition-colors resize-none" placeholder="Tell us what's on your mind..." />
+                    <textarea name="message" value={formData.message} onChange={handleChange} required rows={5} className="w-full px-4 py-3 rounded-2xl bg-[#1A1A1A] border-2 border-transparent focus:border-[#DCAB6B] outline-none transition-colors resize-none" placeholder="Tell us what's on your mind..." />
                   </div>
 
-                  <button type="submit" className="w-full bg-[#FF9B6A] text-white px-8 py-4 rounded-full font-medium hover:bg-[#e88a5b] transition-colors flex items-center justify-center gap-2">
+                  <button type="submit" className="w-full text-white px-8 py-4 rounded-full font-medium flex items-center justify-center gap-2
+                  bg-gradient-to-r from-[#DCAB6B] to-[#3D230A]
+                  border border-white/20
+                  shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]
+                  hover:shadow-[0_0_15px_rgba(255,155,106,0.4)]
+                  transition-all duration-300
+                  overflow-hidden
+                  hover:brightness-110
+                  hover:scale-[1.02]">
                     <Send size={20} />
                     Send Message
                   </button>
@@ -190,19 +189,7 @@ export function Contact() {
           }} transition={{
             duration: 0.6
           }} className="space-y-6">
-              <div className="bg-[#2A2A2A] rounded-[3rem] h-[400px] overflow-hidden relative">
-                {/* Map placeholder - in production, use Google Maps or Mapbox */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin className="w-16 h-16 text-[#FF9B6A] mx-auto mb-4" />
-                    <p className="text-white font-medium">123 Coffee Street</p>
-                    <p className="text-gray-400">Downtown District, NY 10001</p>
-                  </div>
-                </div>
-                {/* Decorative grid overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#FF9B6A]/5 to-transparent"></div>
-              </div>
-
+              {/* Cafe Contact */}
               <div className="bg-[#2A2A2A] rounded-3xl p-8 space-y-6">
                 <h3 className="text-2xl font-bold text-white">
                   Visit Our Cafe
@@ -212,9 +199,11 @@ export function Contact() {
                   accessible by public transport. Street parking is available,
                   and we're just a 5-minute walk from the subway station.
                 </p>
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <MapPin className="w-5 h-5 text-[#FF9B6A] flex-shrink-0 mt-1" />
+                {/* Cafe info */}
+                <div className="relative">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-0">
+                  <div className="flex items-start gap-3 bg-transparent p-4 rounded-xl">
+                    <MapPin className="w-5 h-5 text-[#DCAB6B] flex-shrink-0 mt-1" />
                     <div>
                       <p className="text-white font-medium">Address</p>
                       <p className="text-gray-400 text-sm">
@@ -222,19 +211,76 @@ export function Contact() {
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <Clock className="w-5 h-5 text-[#FF9B6A] flex-shrink-0 mt-1" />
+                  <div className="flex items-start gap-3 bg-transparent p-4 rounded-xl">
+                    <Clock className="w-5 h-5 text-[#DCAB6B] flex-shrink-0 mt-1" />
                     <div>
                       <p className="text-white font-medium">Hours</p>
                       <p className="text-gray-400 text-sm">
-                        Mon-Fri: 7AM-8PM | Sat-Sun: 8AM-9PM
+                        Mon-Fri: 7AM-8PM<br />Sat-Sun: 8AM-9PM
                       </p>
                     </div>
                   </div>
+                  <div className="flex items-start gap-3 bg-transparent p-4 rounded-xl">
+                    <Phone className="w-5 h-5 text-[#DCAB6B] flex-shrink-0 mt-1" />
+                    <div>
+                      <p className="text-white font-medium">Phone</p>
+                      <a href="tel:+11234567890" className="text-gray-400 text-sm hover:text-[#DCAB6B] transition-colors">
+                        +1 (123) 456-7890
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3 bg-transparent p-4 rounded-xl">
+                    <Mail className="w-5 h-5 text-[#DCAB6B] flex-shrink-0 mt-1" />
+                    <div>
+                      <p className="text-white font-medium">Email</p>
+                      <a href="mailto:hello@netwocafe.com" className="text-gray-400 text-sm hover:text-[#DCAB6B] transition-colors">
+                        hello@netwocafe.com
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <button className="w-full bg-[#FF9B6A] text-white px-6 py-3 rounded-full font-medium hover:bg-[#e88a5b] transition-colors">
-                  Get Directions
-                </button>
+                {/* Social icons */}
+                <div className="mt-0 pt-6 flex items-center justify-center space-x-6">
+                  <h4 className="text-white font-medium text-xl">Follow Us</h4>
+                  <div className="flex space-x-4">
+                    <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/20 flex items-center justify-center hover:border-white transition-all duration-300">
+                      <Facebook className="w-4 h-4 text-white fill-white/80" />
+                    </a>
+                    <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/20 flex items-center justify-center hover:border-white transition-all duration-300">
+                      <Instagram className="w-4 h-4 text-white" />
+                    </a>
+                    <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/20 flex items-center justify-center hover:border-white transition-all duration-300">
+                      <Twitter className="w-4 h-4 text-white fill-white/80" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+              </div>
+
+              {/* Location */}
+              <div className="bg-[#2A2A2A] rounded-lg h-[300px] overflow-hidden relative">
+                <iframe 
+                  width="100%" 
+                  height="100%" 
+                  frameBorder="0" 
+                  scrolling="no" 
+                  marginHeight={0} 
+                  marginWidth={0} 
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=-74.0060%2C40.7128%2C-73.9940%2C40.7228&layer=mapnik&marker=40.7178,-74.0000"
+                  className="rounded-lg"
+                >
+                </iframe>
+                <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm p-2 rounded-lg shadow-lg">
+                  <a 
+                    href="https://www.openstreetmap.org/?mlat=40.7178&mlon=-74.0000#map=17/40.7178/-74.0000" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-sm text-[#1A1A1A] hover:text-[#DCAB6B] transition-colors flex items-center gap-1"
+                  >
+                    <MapPin className="w-4 h-4" />
+                    View Larger Map
+                  </a>
+                </div>
               </div>
             </motion.div>
           </div>

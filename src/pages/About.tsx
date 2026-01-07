@@ -24,21 +24,41 @@ export function About() {
     description: 'Committed to ethical sourcing and environmental responsibility.'
   }];
   const team = [{
-    name: 'Sarah Mitchell',
-    role: 'Head Caféra',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
-  }, {
-    name: 'James Chen',
-    role: 'Roast Master',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
-  }, {
-    name: 'Emma Rodriguez',
-    role: 'Pastry Chef',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
-  }, {
-    name: 'Michael Park',
+    name: 'John Smith',
     role: 'Manager',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    social: {
+      facebook: '#',
+      twitter: '#',
+      instagram: '#'
+    }
+  }, {
+    name: 'Sarah Johnson',
+    role: 'Roast Master',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    social: {
+      facebook: '#',
+      twitter: '#',
+      instagram: '#'
+    }
+  }, {
+    name: 'Michael Chen',
+    role: 'Pastry Chef',
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    social: {
+      facebook: '#',
+      twitter: '#',
+      instagram: '#'
+    }
+  }, {
+    name: 'Emma Wilson',
+    role: 'Head Barista',
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+    social: {
+      facebook: '#',
+      twitter: '#',
+      instagram: '#'
+    }
   }];
   const timeline = [{
     year: '2010',
@@ -206,29 +226,44 @@ export function About() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {team.map((member, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group flex flex-col items-center"
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group relative bg-transparent rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
-                <div className="relative mb-4 flex items-center justify-center">
-                  <div className="overflow-hidden" style={{ width: '170px', height: '220px', borderRadius: '50% / 40%', boxShadow: '0 8px 32px 0 rgba(31,38,135,0.18)' }}>
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      style={{ width: '170px', height: '220px', objectFit: 'cover' }}
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] to-transparent opacity-60 rounded-full pointer-events-none" style={{ borderRadius: '50% / 40%' }}></div>
+                <div className="relative">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
-                <h3 className="text-xl font-bold text-white text-center">{member.name}</h3>
-                <p className="text-[#DCAB6B] text-center">{member.role}</p>
+                {/* info */}
+                <div className="p-6 pt-4 text-center bg-white mx-4 -mt-6 relative z-10 rounded-lg">
+                  <h3 className="text-xl font-serif font-bold text-gray-800 mb-1">{member.name}</h3>
+                  <p className="text-[#DCAB6B] font-medium mb-4">{member.role}</p>
+                  <div className="flex justify-center space-x-4">
+                    {Object.entries(member.social).map(([platform, url]) => (
+                      <a 
+                        key={platform} 
+                        href={url} 
+                        className="text-gray-500 hover:text-[#DCAB6B] transition-colors"
+                        aria-label={`${member.name}'s ${platform}`}
+                      >
+                        <img 
+                          src={`https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/${platform}.svg`} 
+                          alt={platform}
+                          className="w-5 h-5"
+                        />
+                      </a>
+                    ))}
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>

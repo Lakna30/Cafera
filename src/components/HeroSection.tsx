@@ -148,7 +148,7 @@ export function HeroSection() {
               <div className="flex gap-4">
                 <button
                   className="relative px-10 py-3 rounded-full font-medium text-white 
-                    bg-gradient-to-b from-[#3D230A] to-[#DCAB6B]
+                    bg-gradient-to-b from-[#211305]
                     border border-white/70
                     shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]
                     hover:shadow-[0_0_15px_rgba(255,155,106,0.4)]

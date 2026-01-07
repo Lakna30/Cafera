@@ -10,7 +10,7 @@ export function Footer() {
               Caféra
             </a>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Serving the best coffee with the best vibes since 2020. Come visit
+              Serving the best coffee with the best vibes since 2010. Come visit
               us and taste the difference.
             </p>
           </div>

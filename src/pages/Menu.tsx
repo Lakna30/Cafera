@@ -166,7 +166,7 @@ export function Menu() {
       <section className="py-8 px-4 md:px-8 bg-[#1A1A1A] sticky top-20 z-40 backdrop-blur-md bg-[#1A1A1A]/90">
         <div className="container mx-auto">
           <div className="flex flex-wrap justify-center gap-4">
-            {categories.map(category => <button key={category.id} onClick={() => setActiveCategory(category.id)} className={`px-8 py-3 rounded-full font-medium transition-all duration-300 ${activeCategory === category.id ? 'bg-gradient-to-r from-[#DCAB6B] to-[#3D230A] border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] text-white shadow-lg hover:shadow-[0_0_15px_rgba(255,155,106,0.4)] hover:brightness-110' : 'bg-[#2A2A2A] text-gray-400 hover:bg-[#3A3A3A]'}`}>
+            {categories.map(category => <button key={category.id} onClick={() => setActiveCategory(category.id)} className={`px-8 py-3 rounded-full font-medium transition-all duration-300 ${activeCategory === category.id ? 'bg-gradient-to-r from-[#211305] border border-white/70 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] text-white shadow-lg hover:shadow-[0_0_15px_rgba(255,155,106,0.4)] hover:brightness-110' : 'bg-[#2A2A2A] text-gray-400 hover:bg-[#3A3A3A]'}`}>
                 {category.name}
               </button>)}
           </div>
