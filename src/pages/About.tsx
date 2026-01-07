@@ -159,6 +159,62 @@ export function About() {
         </div>
       </section>
 
+      {/* Ingredients Section */}
+      <section className="py-20 px-4 md:px-8 bg-[#1A1A1A]">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="space-y-6 text-white order-2 lg:order-1"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold">
+                Premium Ingredients
+                <br/>
+                Perfect Brew
+              </h2>
+              <p className="text-gray-400 text-lg leading-relaxed">
+                We believe that great coffee starts with exceptional ingredients. That's why we source only the finest, ethically-grown coffee beans from sustainable farms around the world. Each batch is carefully selected for its unique flavor profile and quality.
+              </p>
+              <div className="grid grid-cols-2 gap-4 mt-8">
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                  <h4 className="text-[#DCAB6B] font-medium mb-2">Single-Origin Beans</h4>
+                  <p className="text-gray-300 text-sm">Ethically sourced from sustainable farms worldwide</p>
+                </div>
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                  <h4 className="text-[#DCAB6B] font-medium mb-2">Freshly Roasted</h4>
+                  <p className="text-gray-300 text-sm">Small batch roasted for optimal flavor and freshness</p>
+                </div>
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                  <h4 className="text-[#DCAB6B] font-medium mb-2">Premium Dairy</h4>
+                  <p className="text-gray-300 text-sm">Organic milk and plant-based alternatives</p>
+                </div>
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                  <h4 className="text-[#DCAB6B] font-medium mb-2">House-Made</h4>
+                  <p className="text-gray-300 text-sm">Artisanal syrups and natural flavorings</p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="order-1 lg:order-2"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
+                alt="Coffee Ingredients and Tools" 
+                className="rounded-3xl w-full h-[500px] object-cover shadow-2xl" 
+              />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Values Section */}
       <section className="py-20 px-4 md:px-8 bg-[#1A1A1A]">
         <div className="container mx-auto">
@@ -179,27 +235,51 @@ export function About() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
             {values.map((value, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="backdrop-blur-lg bg-white/10 border border-white/20 shadow-xl p-8 rounded-3xl text-center space-y-4 group transition-all duration-300 relative overflow-hidden cursor-pointer"
-                style={{ boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)' }}
-                whileHover={{ scale: 1.10, boxShadow: '0 16px 48px 0 rgba(31,38,135,0.25)' }}
+                viewport={{ once: true, margin: "-50px" }}
+                className="relative group h-full hover:z-10"
+                whileHover={{ 
+                  scale: 1.03,
+                  transition: {
+                    type: 'spring',
+                    stiffness: 400,
+                    damping: 15
+                  }
+                }}
+                transition={{ 
+                  delay: index * 0.1,
+                  type: 'spring',
+                  stiffness: 100,
+                  damping: 15,
+                  when: "beforeChildren",
+                  staggerChildren: 0.1
+                }}
               >
-                <div className="text-[#DCAB6B] group-hover:text-white transition-colors mx-auto w-fit">
-                  {value.icon}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#DCAB6B]/20 to-[#3D230A]/30 rounded-3xl blur-md" />
+                <div className="relative h-full backdrop-blur-xl bg-gradient-to-br from-white/10 to-[#3D230A]/5 border border-[#DCAB6B]/30 rounded-3xl p-8 text-center space-y-5 transition-all duration-500 overflow-hidden">
+                  {/* Animated background elements */}
+                  <div className="absolute inset-0">
+                    <div className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-[radial-gradient(circle,rgba(220,171,107,0.1)_0%,transparent_70%)] animate-spin-slow" />
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#DCAB6B] to-[#f3d5a8] mb-3 transition-all duration-500">
+                      {value.title}
+                    </h3>
+                    <p className="text-white leading-relaxed">
+                      {value.description}
+                    </p>
+                  </div>
+                  
+                  {/* Subtle overlay */}
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black/40 to-transparent" />
                 </div>
-                <h3 className="text-xl font-bold text-white">{value.title}</h3>
-                <p className="text-gray-400 group-hover:text-white/90 transition-colors">
-                  {value.description}
-                </p>
-                {/* Glass shine effect on hover */}
-                <span className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300 bg-gradient-to-tr from-white/60 to-transparent" />
               </motion.div>
             ))}
           </div>
@@ -244,9 +324,13 @@ export function About() {
                   />
                 </div>
                 {/* info */}
-                <div className="p-6 pt-4 text-center bg-white mx-4 -mt-6 relative z-10 rounded-lg">
+                <div className="p-6 pt-4 text-center mx-4 -mt-20 relative z-10 rounded-lg
+                  bg-white/80 backdrop-blur-sm
+                  border border-white/20
+                  shadow-lg
+                  hover:bg-white/90 hover:backdrop-blur-md transition-all duration-300">
                   <h3 className="text-xl font-serif font-bold text-gray-800 mb-1">{member.name}</h3>
-                  <p className="text-[#DCAB6B] font-medium mb-4">{member.role}</p>
+                  <p className="text-[#211305] font-medium mb-4">{member.role}</p>
                   <div className="flex justify-center space-x-4">
                     {Object.entries(member.social).map(([platform, url]) => (
                       <a 
@@ -270,66 +354,34 @@ export function About() {
         </div>
       </section>
 
-      {/* Timeline Section */}
-      <section className="py-20 px-4 md:px-8 bg-[#1A1A1A]">
-        <div className="container mx-auto max-w-4xl">
-          <motion.div initial={{
-          opacity: 0,
-          y: 20
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} viewport={{
-          once: true
-        }} className="text-center mb-16">
-            <span className="text-[#DCAB6B] font-medium tracking-widest text-sm uppercase">
-              Our Journey
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mt-2">
-              Timeline
-            </h2>
-          </motion.div>
-
-          <div className="space-y-12">
-            {timeline.map((item, index) => <motion.div key={index} initial={{
-            opacity: 0,
-            x: index % 2 === 0 ? -50 : 50
-          }} whileInView={{
-            opacity: 1,
-            x: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.6
-          }} className="flex items-center gap-8">
-                <div className="flex-shrink-0 w-24 h-24 bg-[#DCAB6B] rounded-full flex items-center justify-center">
-                  <span className="text-[#3D230A] font-bold text-xl">
-                    {item.year}
-                  </span>
-                </div>
-                <div className="flex-1 bg-[#2A2A2A] p-6 rounded-2xl">
-                  <p className="text-gray-300 text-lg">{item.event}</p>
-                </div>
-              </motion.div>)}
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-20 px-4 md:px-8 bg-[#1A1A1A]">
-        <motion.div initial={{
-        opacity: 0,
-        y: 30
-      }} whileInView={{
-        opacity: 1,
-        y: 0
-      }} viewport={{
-        once: true
-      }} className="container mx-auto bg-[#F5E6D3] rounded-[3rem] p-12 md:p-20 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-6">
+        <motion.div 
+          initial={{
+            opacity: 0,
+            y: 30
+          }} 
+          whileInView={{
+            opacity: 1,
+            y: 0
+          }} 
+          viewport={{
+            once: true
+          }} 
+          className="container mx-auto rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden"
+          style={{
+            backgroundImage: "url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
+        >
+          <div className="absolute inset-0 bg-black/70"></div>
+          <div className="relative z-10">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Come Visit Us
           </h2>
-          <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-gray-200 text-lg mb-8 max-w-2xl mx-auto">
             Experience the warmth of our cafe and taste the difference passion
             makes. We can't wait to serve you!
           </p>
@@ -339,6 +391,7 @@ export function About() {
                   hover:brightness-110">
             Make a Reservation
           </button>
+          </div>
         </motion.div>
       </section>
 
