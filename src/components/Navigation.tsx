@@ -112,14 +112,14 @@ export function Navigation() {
               {navLinks.map(link => <ScrollToTopLink 
                 key={link.name} 
                 to={link.href} 
-                className={`transition-colors ${isActive(link.href) ? 'text-[#FF9B6A]' : 'text-gray-300 hover:text-[#FF9B6A]'}`} 
+                className={`transition-colors ${isActive(link.href) ? 'text-[#DCAB6B]' : 'text-gray-300 hover:text-[#DCAB6B]'}`} 
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.name}
               </ScrollToTopLink>)}
               <ScrollToTopLink 
                 to="/reservation" 
-                className="bg-[#FF9B6A] text-white px-6 py-3 rounded-full font-medium w-full text-center" 
+                className="bg-[#DCAB6B] text-white px-6 py-3 rounded-full font-medium w-full text-center" 
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Book Table
