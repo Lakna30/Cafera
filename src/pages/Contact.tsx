@@ -42,7 +42,7 @@ export function Contact() {
   }, {
     icon: <Mail className="w-6 h-6" />,
     title: 'Email Us',
-    details: ['info@netwo.com', 'reservations@netwo.com']
+    details: ['info@cafera.com', 'reservations@cafera.com']
   }, {
     icon: <Clock className="w-6 h-6" />,
     title: 'Hours',
@@ -233,8 +233,8 @@ export function Contact() {
                     <Mail className="w-5 h-5 text-[#DCAB6B] flex-shrink-0 mt-1" />
                     <div>
                       <p className="text-white font-medium">Email</p>
-                      <a href="mailto:hello@netwocafe.com" className="text-gray-400 text-sm hover:text-[#DCAB6B] transition-colors">
-                        hello@netwocafe.com
+                      <a href="mailto:hello@cafera.com" className="text-gray-400 text-sm hover:text-[#DCAB6B] transition-colors">
+                        hello@cafera.com
                       </a>
                     </div>
                   </div>

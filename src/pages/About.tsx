@@ -142,7 +142,7 @@ export function About() {
                 More Than Just Coffee
               </h2>
               <p className="text-gray-400 text-lg leading-relaxed">
-                Our founder, Maria Santos, opened netWO with a vision: to create
+                Our founder, Maria Santos, opened Caféra with a vision: to create
                 a third place between home and work where people could connect
                 over exceptional coffee. Every detail, from our carefully
                 curated playlist to our comfortable seating, is designed to make

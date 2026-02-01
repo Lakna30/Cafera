@@ -79,7 +79,7 @@ export function Reservation() {
             </span>
           </h1>
           <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-            Secure your table and enjoy a memorable experience at netWO Cafe. We
+            Secure your table and enjoy a memorable experience at Caféra Cafe. We
             look forward to serving you!
           </p>
         </motion.div>
@@ -382,7 +382,7 @@ export function Reservation() {
             <a href="tel:+15551234567" className="bg-[#2A2A2A] text-white px-6 py-3 rounded-full font-medium border border-white/70 hover:bg-[#3A3A3A] hover:brightness-110 transition-colors">
               Call Us: (555) 123-4567
             </a>
-            <a href="mailto:reservations@netwo.com" className="text-white px-6 py-3 rounded-full font-medium
+            <a href="mailto:reservations@cafera.com" className="text-white px-6 py-3 rounded-full font-medium
                     bg-[#211305]
                     border border-white/70
                     shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]
